@@ -1,0 +1,93 @@
+{
+  "name": "dsh-nailong-ui",
+  "version": "1.0.0",
+  "description": "奶龙主题 for DeepSeek Harness Web：明黄蛋黄主色、奶白暖调表面、圆润无棱角的几何与回弹动效。纯 CSS 令牌覆盖 + 声明式插槽，零运行时依赖。inspired-by 配色风格，不含任何形象素材，非官方。",
+  "type": "module",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": {
+      "default": "./lib/index.mjs"
+    },
+    "./client": {
+      "default": "./client/client.js"
+    },
+    "./tokens": {
+      "default": "./src/tokens.mjs"
+    },
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "client",
+    "src",
+    "assets",
+    "cordis.patch.yml",
+    "scripts",
+    "docs",
+    "LICENSE",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "check": "node test/run-all.mjs",
+    "prepublishOnly": "node scripts/build.mjs && node test/run-all.mjs"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins",
+    "nailong",
+    "奶龙",
+    "yellow",
+    "theme",
+    "skin",
+    "cartoon",
+    "css-variables"
+  ],
+  "author": "JAKE1266 <3051975611@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAKE1266/dsh-nailong-ui.git"
+  },
+  "homepage": "https://github.com/JAKE1266/dsh-nailong-ui#readme",
+  "bugs": {
+    "url": "https://github.com/JAKE1266/dsh-nailong-ui/issues"
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.2 <0.3.0-0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-brand-official"
+      ]
+    },
+    "catalog": {
+      "category": "theme",
+      "summary": {
+        "zh": "奶龙主题：明黄蛋黄主色、奶白暖调表面、圆润几何与回弹动效，明暗双主题，附品牌标记与首页快捷入口。",
+        "en": "A Nailong-inspired theme for DSH Web: egg-yolk yellow brand, cream-warm surfaces, rounded geometry and springy motion, light/dark themes, plus brand marks and hero quick actions."
+      },
+      "capabilities": []
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
