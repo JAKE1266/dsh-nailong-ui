@@ -36,6 +36,7 @@ const SEED_MODULES = new Set(['react', 'react/jsx-runtime', 'react-dom'])
 const MODULES = [
   { file: 'tokens.mjs', spec: './tokens.mjs', varName: '__MOD_TOKENS__' },
   { file: 'artwork.mjs', spec: './artwork.mjs', varName: '__MOD_ARTWORK__' },
+  { file: 'conflict.mjs', spec: './conflict.mjs', varName: '__MOD_CONFLICT__' },
   { file: 'components.mjs', spec: './components.mjs', varName: '__MOD_COMPONENTS__' },
 ]
 

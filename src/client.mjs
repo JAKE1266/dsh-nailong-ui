@@ -39,6 +39,8 @@ const {
   renderSkinCss,
 } = require('./tokens.mjs')
 
+const { installConflictCheck } = require('./conflict.mjs')
+
 const PLUGIN_ID = 'dsh-nailong-ui'
 
 /**
@@ -187,6 +189,13 @@ export function createApply(requireFn) {
       // 第一层：纯 CSS 皮肤，永远尝试，不依赖任何服务。
       register(() => installSkin(doc), `${PLUGIN_ID}: skin stylesheet`)
       register(() => markHostSurfaces(doc), `${PLUGIN_ID}: surface markers`)
+
+      // 冲突自检：多个全站皮肤同时启用会混色，给一条明确的诊断。
+      // 必须在 installSkin 之后调用 —— 那时 <html> 上已有本皮肤标记。
+      register(
+        () => installConflictCheck(doc, SKIN_ATTRIBUTE, PLUGIN_ID),
+        `${PLUGIN_ID}: peer skin conflict check`,
+      )
 
       // 第二层：React 组件。整体可选，失败只影响这一层。
       try {
